@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from url_compresion.views import ExpandShortUrlView, ShortenUrlView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('shorten/', ShortenUrlView.as_view(), name='shorten-url'),
+    path('shrt/<str:code>/', ExpandShortUrlView.as_view(), name='expand-short-url'),
 ]
